@@ -38,8 +38,8 @@ export const mapRoute = (instance: any) => {
     )
     .map((methodName) => {
       const fn = prototype[methodName];
-      const route = Reflect.getMetadata(fn, PATH_METADATA);
-      const method = Reflect.getMetadata(fn, METHOD_METADATA);
+      const route = Reflect.getMetadata(PATH_METADATA, fn);
+      const method = Reflect.getMetadata(METHOD_METADATA, fn);
       return {
         route,
         method,

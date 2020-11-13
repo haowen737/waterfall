@@ -1,19 +1,27 @@
 import { expect } from 'chai';
+import { idText } from 'typescript';
 
 import { Get, Controller, mapRoute } from '../src/lib/decorator'
 
-describe('should transfer http method', () => {
+describe('http', () => {
 
-  // @Controller('/hello')
-  // class HelloController {
+  it('should transfer http method', () => {
+    @Controller('/hello')
+    class HelloController {
 
-  //   @Get('/foo')
-  //   foo() {
-  //     return true
-  //   }
+      @Get('/foo')
+      foo() {
+        return true
+      }
 
-  // }
+    }
 
-  // const route = mapRoute(new HelloController())
-  expect(true).to.be.true
+    const routes = mapRoute(new HelloController())
+    const route = routes[0]
+
+    expect(route.route).to.equal('/foo')
+    expect(route.method).to.equal('get')
+    expect(route.methodName).to.equal('foo')
+  })
+
 })
