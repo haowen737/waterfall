@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { idText } from 'typescript';
 
 import { Get, Controller, mapRoute } from '../src/lib/decorator'
 
