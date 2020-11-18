@@ -69,6 +69,8 @@ export class KoaRouter {
 
   post = this.basicMethodHandle('post')
   get = this.basicMethodHandle('get')
+  put = this.basicMethodHandle('put')
+  delete = this.basicMethodHandle('delete')
 
   basicMethodHandle (method: string) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias

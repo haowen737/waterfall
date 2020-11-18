@@ -1,2 +1,5 @@
 # waterfall
-nodejs framework
+
+> Build Node.js server-side applications with waterfall!
+
+under developing

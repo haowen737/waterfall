@@ -5,8 +5,23 @@ import request from 'supertest'
 import Koa from 'koa';
 
 import { KoaRouter } from '../src/lib/router'
+import { methods } from '../src/lib/methods'
 
 describe('router', () => {
+
+  it('create koa route', () => {
+    const router = new KoaRouter()
+    expect(router).to.be.instanceOf(KoaRouter)
+  })
+
+  it('access route in all http verb', (done) => {
+    const router = new KoaRouter()
+
+    methods.forEach(method => {
+      expect(router).to.have.property(method)
+    })
+    done()
+  })
 
   it('register routes with or without name', () => {
     const router = new KoaRouter()
@@ -17,7 +32,6 @@ describe('router', () => {
     expect(router.stack[1].path).to.be.equal('/bar')
   })
 
-
   it('match routes', () => {
     const router = new KoaRouter()
     router.get('/foo')
@@ -26,13 +40,14 @@ describe('router', () => {
     expect(matched.path[0].path).to.be.equal('/foo')
   })
 
-  // compose middleware with koa
+  it('compose one middleware for one route', (done) => {
+    done()
+  })
 
   it('share koa context between routers', (done) => {
     const app = new Koa()
     const router = new KoaRouter()
     router.get('/', (ctx, next) => {
-      console.log('ctx', ctx)
       ctx.foo = 'foo'
       return next()
     })
@@ -51,6 +66,10 @@ describe('router', () => {
       expect(res.body).to.have.property('bar', 'bar')
       done()
     })
+  })
+
+  it('register route from decorator', () => {
+    
   })
 
 })

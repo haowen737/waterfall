@@ -51,3 +51,5 @@ export const mapRoute = (instance: any) => {
 
 export const Get = mapMethod("get");
 export const Post = mapMethod("post");
+export const Put = mapMethod("put");
+export const Delete = mapMethod("delete");
